@@ -1,0 +1,19 @@
+{
+  "name": "usts",
+  "version": "0.1.0",
+  "description": "µsTS – MicroService Typescript Template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julio R. Flores <julio@wapp.li>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "nodemon": "^2.0.16",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.6.4"
+  }
+}
