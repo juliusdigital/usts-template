@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "start": "node index.js",
-    "clean": "npx rimraf dist",
+    "clean": "npx rimraf dist out",
     "prebuild": "npm run clean",
     "build": "tsc -p .",
+    "build:binary": "npm run clean && tsc -p .",
+    "docker:build": "docker build -t $npm_package_name:$npm_package_version --build-arg APP_NAME=${npm_package_name} $(pwd)/../",
+    "docker:build-binary": "docker build -t $npm_package_name:$npm_package_version --build-arg APP_NAME=${npm_package_name} $(pwd)/../Dockerfile.binary",
+    "postbuild:binary": "pkg -t node16-alpine-arm64 -o ./out/${SERVICE_NAME} dist/index.js",
     "check-env": "node -e 'console.log(process.env)' | grep npm"
   },
   "author": "Julio R. Flores <julio@wapp.li>",

@@ -2,9 +2,9 @@
 FROM node:16-alpine as builder
 
 ARG APP_NAME="your-service"
-ARG APP_PATH="/opt/"
+ARG APP_PATH="/opt"
 ARG BASE_DIR="service"
-ARG SOURCE="${BASE_DIR}/src"
+ARG SOURCE="src"
 
 RUN apk update          && \
     apk add --update       \
@@ -20,7 +20,7 @@ COPY ${BASE_DIR}/package*.json ${BASE_DIR}/tsconfig.json ./
 
 RUN npm ci
 
-COPY $SOURCE ./$SOURCE
+COPY ${BASE_DIR}/${SOURCE} ./${SOURCE}
 
 RUN npm run build                                        && \
     npm prune --production                               && \
